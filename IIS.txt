@@ -1,0 +1,58 @@
+1) IIS - > installation , dot net framework installation, dot net framework registration
+2) sql server -> installation, data base restore and data base back up creation
+3) virtual directory -> creation and whats the use of it
+4) app pool -> creation and whats the use of it
+5) worker process
+6) windows services creation and deletion
+7)windows scheduler task creation and deletion
+8) Git -> installation AND commands related to git 
+9) TFS -> what is TFS 
+mini project 
+==================
+1) create a batch file to copy files and folders from one location to another location
+2) create a batch file to delete a file with .txt format
+3) create a  windows scheduler task to copy file from one location to another location
+4) create one account in github and to commit , push pull operation using GIT
+5) dot net framework installation 
+6) iis isntallation in your lcoal machine and create one virtual directory and browse one index.html page
+---------------------------------------------------------------------------------------------------------
+
+
+How the request's are processed in IIS
+--------------------------------------
+IIS architecture can be divided into 2 parts.
+i)  Kernel level
+ii) User level
+------------------------------------------------------------------------------------------------------
+Kernel level: 	It is introduced in IIS 6. It contains HTTPS.SYS.
+		Request -> HTTPS.SYS -> Application pool
+		When creating a new application pool it is provided with a 
+		ID and ID for the app pool is created by the HTTPS.SYS,
+		so when a request comes in HTTPS.SYS knows to which app pool
+		this request is meant for.
+		
+		When a HTTPS.SYS receives the request it just passes the 
+		request to the worker process. Worker process looks the URL 
+		and loads the correct ISAPI extension (ISAPI is way to handle
+		request for different resources).
+		
+Worker Process -> HTTP Runtime(calls ProcessRequest) -> HTTPContext( is created) -> HTTPApplication 
+(when this method is created every reuest should pass through corresponding HTTP Modules to reach 
+HTTP Handler this list of module is configured by HTTPApplication) 
+
+HTTP Pipeline contains all the HTTP Modules and intercept any incoming requests.
+-----------------------------------------------------------------------------------------------------
+
+CREATION OF WINDOWS SERVICES (sc.exe create <service name> binPath= "bin path \.exe")
+
+DELETION OF WINDOWS SERVICES (sc.exe delete <service name>)
+-----------------------------------------------------------------------------------------------------
+
+CREATING TASKS SCHEDULER USING CMD LINE (SchTasks /Create /SC DAILY /TN “My Task” /TR “C:RunMe.bat” /ST 09:00)
+					 ----------------
+					       	 OR
+					 ----------------
+CREATING TASKS SCHEDULER USING GUI	(Open Task scheduler in windows and create one task with conditions) 
+
+DELETING TASK USING CMD LINE            (SchTasks /Delete /TN "Task name")
+------------------------------------------------------------------------------------------------------
